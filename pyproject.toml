@@ -4,7 +4,7 @@ classifiers=[
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Programming Language :: Python :: 3.12"
 ]
-dependencies = ["build123d (>=0.9.1, <1.0)"]
+dependencies = ["build123d (>=0.9.1, <1.0)", "ocp-vscode"]
 description = "A simple fan controller for one PC case fan."
 dynamic = ["readme"]
 license = "GPLv3"

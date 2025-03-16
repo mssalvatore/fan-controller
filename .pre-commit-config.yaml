@@ -31,7 +31,7 @@ repos:
     rev: v1.11.1
     hooks:
       - id: mypy
-        additional_dependencies: [build123d]
+        additional_dependencies: [build123d, ocp-vscode]
         exclude: "vulture_allowlist.py"
         args: [--ignore-missing-imports, --check-untyped-defs]
   - repo: https://github.com/pre-commit/pre-commit-hooks

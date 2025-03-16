@@ -1,6 +1,17 @@
 from copy import copy
 
 from build123d import *  # noqa: F403
+from ocp_vscode import (  # noqa: F401
+    get_defaults,
+    reset_show,
+    set_defaults,
+    set_port,
+    show,
+    show_all,
+    show_object,
+)
+
+set_port(3939)
 
 cable_gland_diameter = 12.8
 knob_diameter = 10
@@ -93,17 +104,6 @@ def lid():
     return Pos(1.25 * cavity_x, 0, 0) * _lid
 
 
-"""
-show_object(inner_box())
-show_object(outer_box())
-show_object(box_floor())
-"""
-# box()
-show_object(box())
-show_object(lid())
-# show_object(Ellipse(20, lid_lip - 1))
-# show_object(inner_box() - outer_box())
-# b = Box(20, 20, 20)
-# c = Box(20, 20, 20)
-# d = b + c
-# show_object(d)
+box_1 = box()
+lid_1 = lid()
+show_all()
