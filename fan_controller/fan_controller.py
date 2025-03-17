@@ -1,4 +1,6 @@
+import argparse
 from copy import copy
+from pathlib import Path
 
 from build123d import *  # noqa: F403
 from ocp_vscode import (  # noqa: F401
@@ -104,5 +106,28 @@ def lid():
     return _lid
 
 
-_components = pack([box(), lid()], padding=10)
-show_all()
+def export_model_to_stl(model: Part):
+    src_file_path = Path(__file__)
+    renders_dir = src_file_path.parent.parent / "renders"
+
+    if not renders_dir.exists():
+        renders_dir.mkdir()
+    elif not renders_dir.is_dir():
+        raise RuntimeError(f"{renders_dir} is not a directory.")
+
+    stl_file_name = src_file_path.stem + ".stl"
+
+    export_stl(model, renders_dir / stl_file_name)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Fan controller enclosure")
+    parser.add_argument("--stl", action="store_true", help="Export STL")
+    args = parser.parse_args()
+
+    model = Part() + pack([box(), lid()], padding=10)
+
+    if args.stl:
+        export_model_to_stl(Part() + model)
+    else:
+        show_all()
