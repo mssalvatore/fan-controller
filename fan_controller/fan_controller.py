@@ -14,21 +14,21 @@ from ocp_vscode import (  # noqa: F401
 set_port(3939)
 
 cable_gland_diameter = 12.8
-knob_diameter = 10
+knob_diameter = 8
 
 cavity_x = 30
 cavity_y = 60
-cavity_z = max(cable_gland_diameter, knob_diameter) * 1.75
+cavity_z = 25
 
 lid_z = 2.8
 lid_lip = 3
 lid_tolerance = 0.1
 wall_thickness = 2
 
-box_fillet = 4
+box_fillet = 6
 
-screw_shaft_radius = 4
-screw_head_radius = 8
+screw_shaft_radius = 4.5
+screw_head_radius = 8.6
 screw_head_height = 1
 
 
@@ -101,9 +101,8 @@ def lid():
     # edge_center = _lid.edges().sort_by(Axis.Y).filter_by(Plane.XY)[0].center()
     # _lid -= Pos(edge_center.X, edge_center.Y) * pry_slot
 
-    return Pos(1.25 * cavity_x, 0, 0) * _lid
+    return _lid
 
 
-box_1 = box()
-lid_1 = lid()
+_components = pack([box(), lid()], padding=10)
 show_all()
