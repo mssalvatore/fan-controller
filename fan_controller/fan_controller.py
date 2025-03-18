@@ -40,6 +40,30 @@ def lid_2d():
     )
 
 
+def box():
+    box = inner_box() + outer_box() + box_floor()
+
+    cavity_bottom_plane = Plane(box.faces().sort_by(Axis.Z)[1])
+    knob_plane = Plane(box.faces().sort_by(Axis.Y)[0])
+    cable_gland_plane = Plane(box.faces().sort_by(Axis.Y)[-1])
+
+    box -= [
+        cavity_bottom_plane
+        * loc
+        * CounterBoreHole(
+            radius=screw_shaft_radius,
+            counter_bore_radius=screw_head_radius,
+            counter_bore_depth=screw_head_height,
+            depth=wall_thickness,
+        )
+        for loc in GridLocations(0, cavity_y / 2, 1, 2)
+    ]
+    box -= knob_plane * Hole(radius=knob_diameter / 2, depth=wall_thickness + lid_lip)
+    box -= cable_gland_plane * Hole(radius=cable_gland_diameter / 2, depth=wall_thickness + lid_lip)
+
+    return box
+
+
 def inner_box():
     walls = lid_2d() - RectangleRounded(cavity_x, cavity_y, radius=box_fillet - (lid_lip / 2))
     return extrude(walls, amount=cavity_z + wall_thickness)
@@ -66,30 +90,6 @@ def box_floor():
     )
 
     return extrude(floor_2d, amount=wall_thickness)
-
-
-def box():
-    box = inner_box() + outer_box() + box_floor()
-
-    cavity_bottom_plane = Plane(box.faces().sort_by(Axis.Z)[1])
-    knob_plane = Plane(box.faces().sort_by(Axis.Y)[0])
-    cable_gland_plane = Plane(box.faces().sort_by(Axis.Y)[-1])
-
-    box -= [
-        cavity_bottom_plane
-        * loc
-        * CounterBoreHole(
-            radius=screw_shaft_radius,
-            counter_bore_radius=screw_head_radius,
-            counter_bore_depth=screw_head_height,
-            depth=wall_thickness,
-        )
-        for loc in GridLocations(0, cavity_y / 2, 1, 2)
-    ]
-    box -= knob_plane * Hole(radius=knob_diameter / 2, depth=wall_thickness + lid_lip)
-    box -= cable_gland_plane * Hole(radius=cable_gland_diameter / 2, depth=wall_thickness + lid_lip)
-
-    return box
 
 
 def lid():
