@@ -121,7 +121,7 @@ def export_model_to_stl(model: Part):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Fan controller enclosure")
+    parser = argparse.ArgumentParser(description="A simple fan controller for one PC case fan.")
     parser.add_argument("--stl", action="store_true", help="Export STL")
     args = parser.parse_args()
 
