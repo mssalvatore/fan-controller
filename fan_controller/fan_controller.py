@@ -15,8 +15,8 @@ from ocp_vscode import (  # noqa: F401
 
 set_port(3939)
 
-cable_gland_diameter = 12.8
-knob_diameter = 8
+cable_gland_radius = 12.8 / 2
+knob_radius = 8 / 2
 
 cavity_x = 30
 cavity_y = 60
@@ -29,8 +29,8 @@ wall_thickness = 2
 
 box_fillet = 6
 
-screw_shaft_radius = 4.5
-screw_head_radius = 8.6
+screw_shaft_radius = 4.5 / 2
+screw_head_radius = 8.6 / 2
 screw_head_height = 1
 
 
@@ -58,8 +58,8 @@ def box():
         )
         for loc in GridLocations(0, cavity_y / 2, 1, 2)
     ]
-    box -= knob_plane * Hole(radius=knob_diameter / 2, depth=wall_thickness + lid_lip)
-    box -= cable_gland_plane * Hole(radius=cable_gland_diameter / 2, depth=wall_thickness + lid_lip)
+    box -= knob_plane * Hole(radius=knob_radius, depth=wall_thickness + lid_lip)
+    box -= cable_gland_plane * Hole(radius=cable_gland_radius, depth=wall_thickness + lid_lip)
 
     return box
 
