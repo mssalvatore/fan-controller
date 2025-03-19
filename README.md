@@ -8,8 +8,8 @@ A simple fan controller for one PC case fan.
 
 | Name | Quantity |
 | --- | --- |
-| [Box](./renders/fan_controller.stl] | 1 |
-| [Lid](./renders/fan_controller.stl] | 1 |
+| [Box](./renders/box.stl) | 1 |
+| [Lid](./renders/lid.stl) | 1 |
 
 ### Off-the-shelf parts
 | Name | Quantity |
