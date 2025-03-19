@@ -15,19 +15,19 @@ from ocp_vscode import (  # noqa: F401
 
 set_port(3939)
 
-cable_gland_radius = 12.8 / 2
-knob_radius = 8 / 2
+cable_gland_radius = 13 / 2
+knob_radius = 8.5 / 2
 
-cavity_x = 30
+cavity_x = 35
 cavity_y = 60
 cavity_z = 25
 
 lid_z = 2.8
 lid_lip = 3
-lid_tolerance = 0.1
+lid_tolerance = 0.00
 wall_thickness = 2
 
-box_fillet = 6
+box_fillet = 4
 
 screw_shaft_radius = 4.5 / 2
 screw_head_radius = 8.6 / 2
@@ -128,6 +128,6 @@ if __name__ == "__main__":
     model = Part() + pack([box(), lid()], padding=10)
 
     if args.stl:
-        export_model_to_stl(Part() + model)
+        export_model_to_stl(model)
     else:
         show_all()
