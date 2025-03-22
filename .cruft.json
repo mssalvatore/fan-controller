@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/mssalvatore/3d-model-cookiecutter",
-  "commit": "9e78e9e8341a07c858899257703ec85b8bdd5219",
+  "commit": "d1f9143c3fe548c2cd4f07fb7b8317f8016a5162",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -25,7 +25,7 @@
       "_mypy_version": "1.11.1",
       "_vulture_version": "2.9.1",
       "_template": "https://github.com/mssalvatore/3d-model-cookiecutter",
-      "_commit": "9e78e9e8341a07c858899257703ec85b8bdd5219"
+      "_commit": "d1f9143c3fe548c2cd4f07fb7b8317f8016a5162"
     }
   },
   "directory": null
